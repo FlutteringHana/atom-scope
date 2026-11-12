@@ -2,7 +2,7 @@
 
 **Document Type:** Project Decision Log  
 **Project:** AtomScope  
-**Period:** 2026-11-10 — 2026-11-11
+**Period:** 2026-11-10 — 2026-11-12
 
 ---
 
@@ -71,6 +71,12 @@ The project entered a new documentation phase.
 ## 6. Local Implementation — 2026-11-11
 
 The owner authorized implementation, `.gitignore`, and staged local commits, with no remote push or publication. The first release uses React, TypeScript and Vite, represents all three course Parts, and delivers nine interactive modules alongside explicitly labelled concept notes. Scientific assumptions and calculation conventions are documented before treating the visuals as validated models. Remaining experiments and course-specific Bohr–Sommerfeld depth stay visible as future work rather than being represented by invented measurements.
+
+---
+
+## 7. GitHub Pages Delivery — 2026-11-12
+
+The owner connected the GitHub remote `FlutteringHana/atom-scope` and authorized committing and pushing the GitHub Pages Actions configuration. Add a validated build/deploy workflow and derive Vite's production base path from the Pages configuration. This instruction replaces the initial local-only delivery constraint for the requested Pages work. Model assumptions and learning content are unchanged.
 
 ---
 

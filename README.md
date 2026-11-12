@@ -85,6 +85,24 @@ Browser tests use an installed Google Chrome (`channel: chrome`). If it is unava
 
 Navigation uses hash routes (`#/part/2`, `#/topic/bohr`, `#/reference`) so direct topic links work without a server-side routing configuration. Parameter state is retained across workspace/immersive changes and view/panel switches; opening another topic starts that topic at its documented defaults. Animations start paused and respect reduced-motion settings.
 
+## GitHub Pages deployment
+
+The repository includes [a GitHub Actions workflow](.github/workflows/pages.yml) that validates formatting, runs unit tests, builds `dist/`, and deploys it to GitHub Pages on pushes to `main`. It can also be run manually from the Actions tab. Deployment uses the built-in `GITHUB_TOKEN` with job-specific permissions; no personal token or `gh-pages` branch is required.
+
+In [repository Settings → Pages](https://github.com/FlutteringHana/atom-scope/settings/pages), set **Build and deployment → Source → GitHub Actions** before the first run. The workflow reads the site's actual base path from `configure-pages`, so project paths and a future custom domain use the correct asset URLs. Local development continues to use `/`.
+
+To verify the project path locally in PowerShell:
+
+```powershell
+$env:VITE_BASE_PATH = '/atom-scope/'
+npm run build
+npm run preview
+# Open http://127.0.0.1:4173/atom-scope/
+# Remove-Item Env:VITE_BASE_PATH when finished
+```
+
+Workflow status is available on the [Actions page](https://github.com/FlutteringHana/atom-scope/actions/workflows/pages.yml). A successful deployment reports the final site URL in the `github-pages` environment.
+
 ## Source structure
 
 ```text
