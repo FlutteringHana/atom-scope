@@ -39,7 +39,8 @@ docs/
     ├── ADR-0001-technology-stack.md
     ├── ADR-0002-visualization-architecture.md
     ├── ADR-0003-knowledge-navigation.md
-    └── ADR-0004-workspace-modes.md
+    ├── ADR-0004-workspace-modes.md
+    └── ADR-0005-local-application-routing.md
 ```
 
 ## 3. Document Responsibilities

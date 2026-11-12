@@ -105,3 +105,15 @@ A physics feature should not be considered complete until:
 Keep tests close to the relevant physics modules or in a dedicated test directory, depending on project scale.
 
 Prioritize testing pure physics calculations before UI-level tests. UI tests cannot substitute for mathematical validation.
+
+## 7. Initial Validation Record — 2026-11-11
+
+- `npm test`: 22 passing checks across physical calculations, invalid inputs, constants/units, and knowledge-link integrity.
+- `npm run build`: strict TypeScript checking and production bundle generation.
+- `npm run test:e2e`: six interaction scenarios on both desktop and mobile Chrome, 12 passing browser tests. Includes all 17 topic routes, parameter readouts, synchronized views, workspace/immersive preservation, reset, playback, reduced motion, keyboard access, search/filtering, relationships, and horizontal-overflow checks.
+- Desktop and mobile full-page screenshots cover the knowledge map and Bohr workspace. Additional desktop captures cover scattering, blackbody, photoelectric, matter-wave and orbital views. These were visually reviewed for labels, scales, clipping and layout. Generated artifacts are ignored by Git.
+- Wavelength comparisons use the explicitly declared infinite-mass, vacuum convention. Theoretical curves are not validated against experimental datasets because none are bundled.
+- Rutherford validation compares the analytical hyperbola with its closest approach and asymptote, rather than claiming numerical integration/conservation checks for a solver that is not used.
+- Radial normalization is integrated to 100 a₀; the display intentionally ends at 20 a₀.
+
+These checks establish the initial educational implementation. A full accessibility conformance audit and lecture-note review are not yet claimed.

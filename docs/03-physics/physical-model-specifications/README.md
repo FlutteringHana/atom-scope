@@ -1,5 +1,7 @@
 # Physical Model Specifications
 
+Current implementation: [Implemented educational models](IMPLEMENTED_MODELS.md) defines the validated Bohr/hydrogen-like, Rutherford, blackbody, photoelectric, matter-wave and radial-probability models, including domains and known limitations. Dedicated per-topic documents can be split from this specification when their independent complexity warrants it.
+
 Create a dedicated specification here when a physical model has enough independent assumptions, equations, computational behavior, or limitations to warrant its own document.
 
 Suggested future documents:

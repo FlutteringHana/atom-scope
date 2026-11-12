@@ -170,3 +170,13 @@ The following should be decided during implementation, not prematurely:
 - Styling methodology.
 - Whether a particular simulation needs a worker.
 - Whether a specific visualization requires WebGL or 3D.
+
+## 12. Initial Implementation Decisions — 2026-11-11
+
+- Hash-based routes keep local navigation and direct topic links independent of server rewrites. See ADR-0005.
+- React component state is sufficient. Topic parameters are shared across the module's visualizations and retained while changing view, side-panel content, or display mode. Leaving a topic resets its parameters on the next visit.
+- Plain CSS and browser-native SVG implement the design and all current views. No chart library, global state library, WebGL engine, numerical solver, or worker is required.
+- Unicode equations are used initially; KaTeX remains a candidate for future derivation-heavy content.
+- Constants and pure models live in `src/physics/`; course metadata and content in `src/content/`; the shared workspace in `src/features/`; scientific renderers in `src/visualizations/`.
+- Vitest checks pure calculations and course links. Playwright checks desktop and mobile interactions using installed Chrome. Separate include patterns prevent the runners from collecting one another's tests.
+- Development and preview servers bind to loopback. There is no backend or external service dependency at runtime.

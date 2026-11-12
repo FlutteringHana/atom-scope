@@ -14,6 +14,18 @@ Milestones may be adjusted when implementation reveals new constraints. Changes 
 
 ## 2. Milestones
 
+### Implementation snapshot — 2026-11-11
+
+| Milestone | Current state | Evidence / remaining scope |
+| --- | --- | --- |
+| M0 | Complete | Original documentation baseline retained |
+| M1 | Complete | React/TypeScript/Vite, three Parts, 17 topics, responsive navigation and content schema |
+| M2 | Complete | Bohr module: validated SI calculations, coordinated model/energy/spectrum views, controls/context, immersive mode, deeper details, interaction tests |
+| M3 | In progress | Nine interactive modules on six engines; eight other topics have concept notes. Dedicated cathode-ray, Thomson, Bohr–Sommerfeld, Franck–Hertz, diffraction, and general wave-equation simulations remain deferred |
+| M4 | In progress | Typed related links, relationship view, shared reference, mobile layout and reduced-motion support implemented; deeper course-material review and broader accessibility/content refinement remain |
+
+The implemented physics scope and limitations are defined in [Implemented Models](../03-physics/physical-model-specifications/IMPLEMENTED_MODELS.md). This snapshot reports implementation and does not redefine the course architecture or imply that every module is fully simulated.
+
 ### M0 — Documentation and Product Foundation
 
 **Objective:** Establish a coherent product and documentation baseline.

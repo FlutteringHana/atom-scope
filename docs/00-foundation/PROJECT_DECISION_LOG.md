@@ -65,8 +65,12 @@ The project entered a new documentation phase.
 - **Project Direction:** Established
 - **Physics Knowledge Architecture:** Draft v1.0 established; pending review and confirmation
 - **Project Planning:** Initial planning discussions concluded
-- **Development Documentation:** Current focus
-- **Software Implementation:** Next stage
+- **Development Documentation:** Foundation retained; implemented-model specification and validation record added
+- **Software Implementation:** First local application delivered; M1 and M2 complete, M3 and M4 in progress (see Roadmap)
+
+## 6. Local Implementation — 2026-11-11
+
+The owner authorized implementation, `.gitignore`, and staged local commits, with no remote push or publication. The first release uses React, TypeScript and Vite, represents all three course Parts, and delivers nine interactive modules alongside explicitly labelled concept notes. Scientific assumptions and calculation conventions are documented before treating the visuals as validated models. Remaining experiments and course-specific Bohr–Sommerfeld depth stay visible as future work rather than being represented by invented measurements.
 
 ---
 

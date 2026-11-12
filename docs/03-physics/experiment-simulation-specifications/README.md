@@ -1,5 +1,7 @@
 # Experiment Simulation Specifications
 
+The initial application includes a Rutherford apparatus schematic and an ideal photoelectric-effect illustration. Their computational assumptions and provenance are recorded in [Implemented Models](../physical-model-specifications/IMPLEMENTED_MODELS.md). Neither view is a reconstruction of measured data. Franck–Hertz, cathode-ray and diffraction experiments currently have conceptual context only; dedicated quantitative experiment simulations remain future work.
+
 Create a dedicated specification here when an experiment simulation has a distinct apparatus, procedure, observable quantities, data interpretation, or simulation model.
 
 Potential topics from the course knowledge architecture include:

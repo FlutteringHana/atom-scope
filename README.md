@@ -50,8 +50,52 @@ The visualization implementation will use the simplest suitable browser technolo
 
 ## Development status
 
-The project is currently in the documentation and product-definition phase. Detailed implementation decisions may be refined during development and recorded in the relevant specification or ADR.
+The first local application is implemented. It includes all three Parts, 17 topic entries, nine interactive modules built on six independently tested physics engines, eight concept-note modules, knowledge relationships, and a shared workspace with an immersive mode.
+
+Interactive modules:
+- Rutherford scattering: analytical trajectories, apparatus schematic, and deflection curve.
+- Bohr atom, hydrogen-like ions, atomic transitions, and spectroscopy: coordinated atom, energy, and spectrum views.
+- Blackbody radiation: Planck and Rayleigh–Jeans curves.
+- Photoelectric effect: threshold, kinetic energy, and relative-intensity controls.
+- de Broglie matter waves: energy-dependent electron wavelength.
+- Hydrogen orbitals: normalized 1s, 2s, and 2p radial probability distributions.
+
+Concept notes explicitly identify deferred interactive features. They are not experimental simulators. See the [implemented model specification](docs/03-physics/physical-model-specifications/IMPLEMENTED_MODELS.md) for scientific assumptions, conventions, and validation targets, and the [roadmap](docs/05-planning/ROADMAP.md) for remaining scope.
 
 ## Local development
 
-The application setup instructions will be added when the initial Vite project is created.
+Requires Node.js 22.12+ and npm. The UI is in Chinese with English scientific topic labels. No backend, account, or API key is needed.
+
+```sh
+npm ci
+npm run dev
+```
+
+Open the printed loopback URL, normally `http://127.0.0.1:5173`. The development server binds only to the local machine. Nothing is published or pushed by these commands.
+
+```sh
+npm test          # Pure physics and knowledge-data checks
+npm run build    # Strict TypeScript check and production bundle
+npm run preview  # Inspect the built application locally
+npm run test:e2e # Desktop and mobile Chromium interaction tests
+npm run format:check # Check consistent source formatting
+```
+
+Browser tests use an installed Google Chrome (`channel: chrome`). If it is unavailable, install Chrome or change `playwright.config.ts` to use Playwright Chromium and run `npx playwright install chromium`. Screenshots are saved to ignored `artifacts/`; failed-test traces go to ignored `test-results/`.
+
+Navigation uses hash routes (`#/part/2`, `#/topic/bohr`, `#/reference`) so direct topic links work without a server-side routing configuration. Parameter state is retained across workspace/immersive changes and view/panel switches; opening another topic starts that topic at its documented defaults. Animations start paused and respect reduced-motion settings.
+
+## Source structure
+
+```text
+src/app/             Application shell, navigation, map, shared reference
+src/content/         Course metadata, explanations, and conceptual links
+src/features/        Knowledge workspace, parameters, readouts, details
+src/visualizations/  SVG models, schematics, spectra, and probability plots
+src/components/      Reusable chart presentation
+src/physics/         SI constants and pure, independently tested calculations
+src/styles/          Responsive editorial/laboratory design system
+tests/               Desktop and mobile interaction tests
+```
+
+Physical constants are recorded from [NIST 2022 CODATA](https://physics.nist.gov/cuu/pdf/all.pdf). All charts use theoretical predictions; no measured experimental datasets are bundled. The Bohr calculation uses the infinite-nuclear-mass R∞ convention, so its vacuum wavelengths differ from measured air wavelengths. Radial orbital probability is distinguished from three-dimensional probability density.

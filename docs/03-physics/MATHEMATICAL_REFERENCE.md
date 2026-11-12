@@ -33,7 +33,7 @@ These conventions should be reviewed when the first computational modules are im
 
 ## 4. Shared Constants Registry
 
-The following constants are expected to be relevant. Numerical values and precision should be populated from an agreed authoritative reference before implementation.
+The initial implementation uses [NIST 2022 CODATA](https://physics.nist.gov/cuu/pdf/all.pdf). Canonical numerical values are centralized in `src/physics/constants.ts` and also shown in the application's mathematical reference. Shared numerical precision and model conventions are documented in [Implemented Models](physical-model-specifications/IMPLEMENTED_MODELS.md).
 
 | Constant | Symbol | SI unit | Notes |
 |---|---|---|---|
@@ -45,6 +45,8 @@ The following constants are expected to be relevant. Numerical values and precis
 | Vacuum permittivity | ε₀ | F·m⁻¹ | |
 | Bohr radius | a₀ | m | |
 | Rydberg constant | R∞ / R_H | m⁻¹ | Specify convention used |
+
+The initial Bohr implementation uses R∞ = 10973731.568157 m⁻¹ (infinite nuclear mass), with energy computed as −hcR∞Z²/n². The course's −13.6 eV coefficient is the rounded form. Finite-mass R_H and measured air wavelengths are not used. Boltzmann's constant k_B = 1.380649e-23 J·K⁻¹ (exact) and Wien's displacement constant b = 2.897771955e-3 m·K are additionally used by the blackbody module.
 
 ## 5. Equation Index
 
