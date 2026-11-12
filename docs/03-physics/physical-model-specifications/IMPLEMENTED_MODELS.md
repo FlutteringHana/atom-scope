@@ -18,7 +18,7 @@ Use the [NIST 2022 CODATA table](https://physics.nist.gov/cuu/pdf/all.pdf): h = 
 - E_n = -hc R_infinity Z²/n² (joules); r_n = a_0 n²/Z (metres).
 - Delta E = E_final - E_initial; photon energy = |Delta E|; lambda = hc/|Delta E| in vacuum. Downward transitions emit; upward transitions absorb.
 - Infinite nuclear mass, nonrelativistic one-electron Coulomb system; no fine structure, selection rules, recoil, line intensities, or lifetimes. The n-only diagram cannot establish electric-dipole allowedness.
-- Orbit display has radius proportional to n (compressed compared with n²), explicitly marked schematic. Energy chart uses a true linear energy scale.
+- Orbit display has radius proportional to n/√Z (a square-root compression of n²/Z), explicitly marked schematic. Energy chart uses a true linear energy scale. Spectra show a fixed final state for emission and fixed initial state for absorption; selecting a line updates the coordinated state pair.
 - Animation is pausable and illustrative; its speed is unrelated to physical orbital frequency. A transition is selected as a state pair; animation does not change energy or transition state.
 - Spectral lines are theoretical monochromatic vacuum wavelengths. Nonvisible lines are marked UV/IR without an invented visible color. Line height is schematic, not intensity.
 - Tests: E1 near -13.6057 eV, a0, Z² and 1/Z scaling, reciprocal emission/absorption, Balmer 3→2 near 656.112 nm under the declared infinite-mass convention (not measured air H-alpha).
