@@ -1,0 +1,30 @@
+# Dependencies and build output
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+.aws/
+.openai/
+
+# Logs and local tooling
+*.log
+.vite/
+.cache/
+playwright-report/
+test-results/
+artifacts/
+.local/
+
+# Editors and operating systems
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
