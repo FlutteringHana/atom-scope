@@ -1,11 +1,10 @@
 # Physical Model Specifications
 
-Current implementation: [Implemented educational models](IMPLEMENTED_MODELS.md) defines the validated Bohr/hydrogen-like, Rutherford, blackbody, photoelectric, matter-wave and radial-probability models, including domains and known limitations. Dedicated per-topic documents can be split from this specification when their independent complexity warrants it.
+Current implementation: [Implemented educational models](IMPLEMENTED_MODELS.md) indexes the validated models. [Rutherford Scattering Model](RUTHERFORD_SCATTERING_MODEL.md) is the dedicated contract for exact mechanics, linked geometry, derivations and cross sections; its measurement assumptions live in the companion experiment specification.
 
 Create a dedicated specification here when a physical model has enough independent assumptions, equations, computational behavior, or limitations to warrant its own document.
 
 Suggested future documents:
-- RUTHERFORD_SCATTERING_MODEL.md
 - BOHR_HYDROGEN_MODEL.md
 - HYDROGEN_LIKE_SYSTEMS.md
 - BOHR_SOMMERFELD_MODEL.md

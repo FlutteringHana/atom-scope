@@ -4,7 +4,7 @@
 > - Document Type: Verification and Validation Specification
 > - Status: Accepted
 > - Version: 0.1
-> - Last Updated: 2026-11-11
+> - Last Updated: 2026-11-17
 
 ## 1. Purpose
 
@@ -117,3 +117,13 @@ Prioritize testing pure physics calculations before UI-level tests. UI tests can
 - Radial normalization is integrated to 100 a₀; the display intentionally ends at 20 a₀.
 
 These checks establish the initial educational implementation. A full accessibility conformance audit and lecture-note review are not yet claimed.
+
+## 8. Rutherford Extension Validation — 2026-11-17
+
+- `src/physics/rutherford/model.test.ts` adds 21 tests; the full unit suite contains 43 tests. Numeric targets include a≈22.7514 fm, θ=90° at b=a, rmin≈53.0438 fm at b=20 fm, 5.17628 barn/sr at 90°, the exact 60°/120° ratio 9, and E⁻²/Z² scaling.
+- Verify analytical velocity against finite-difference position/time, acceleration against F/m, total E and signed Lz along several orbits including b=0, polar-orbit equivalence, and asymptotic velocity directions. No numerical integration engine or solver accuracy is claimed.
+- Compare the finite ring cross section with 20,000-point independent quadrature and the differential Jacobian with a finite difference of b(θ). Check SI area conversions, efficiency/count boundaries, explicit cutoff and rejection of failed thin-target/local-patch regimes.
+- Seeded Poisson tests compare empirical mean/variance at λ=2,50,1000 using 20,000 samples each. Conditional sampling tests check uniformity in b² rather than b.
+- `tests/rutherford.spec.ts` adds six scenarios run on desktop and mobile (12 new browser tests; full suite 24). These cover linked quantities, both complete core derivations and expanded algebra, route/parameter preservation, sampling, acceptance modes, invalid inputs, keyboard controls, reduced motion, immersive pinning and responsive overflow. Generated screenshots cover all three views.
+- Reference conventions and the fixed-target versus CM distinction are recorded in the adopted model contract. The original proposal's review-draft status is preserved. Third-route verification remains pending its reference source.
+- Layout checks additionally cover 320 px and 768 px widths. A production `/atom-scope/` smoke check verifies the lazy module, bundled KaTeX fonts, radial derivation, detector expectation, and reference navigation without failed assets. No push/deployment is needed for this local verification.

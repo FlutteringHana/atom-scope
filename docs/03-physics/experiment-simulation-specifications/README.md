@@ -1,6 +1,6 @@
 # Experiment Simulation Specifications
 
-The initial application includes a Rutherford apparatus schematic and an ideal photoelectric-effect illustration. Their computational assumptions and provenance are recorded in [Implemented Models](../physical-model-specifications/IMPLEMENTED_MODELS.md). Neither view is a reconstruction of measured data. Franck–Hertz, cathode-ray and diffraction experiments currently have conceptual context only; dedicated quantitative experiment simulations remain future work.
+The Rutherford module now provides exact ring acceptance, approximate local-patch acceptance, thin-target predictions and synthetic count statistics, specified in [Rutherford Measurement](RUTHERFORD_MEASUREMENT.md). The photoelectric-effect illustration remains indexed in [Implemented Models](../physical-model-specifications/IMPLEMENTED_MODELS.md). Neither is a reconstruction of measured data. Franck–Hertz, cathode-ray and diffraction experiments currently have conceptual context only; dedicated quantitative experiment simulations remain future work.
 
 Create a dedicated specification here when an experiment simulation has a distinct apparatus, procedure, observable quantities, data interpretation, or simulation model.
 

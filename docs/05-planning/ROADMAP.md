@@ -4,7 +4,7 @@
 > - Document Type: Development Plan
 > - Status: Accepted
 > - Version: 0.1
-> - Last Updated: 2026-11-11
+> - Last Updated: 2026-11-17
 
 ## 1. Planning Principles
 
@@ -25,6 +25,20 @@ Milestones may be adjusted when implementation reveals new constraints. Changes 
 | M4 | In progress | Typed related links, relationship view, shared reference, mobile layout and reduced-motion support implemented; deeper course-material review and broader accessibility/content refinement remain |
 
 The implemented physics scope and limitations are defined in [Implemented Models](../03-physics/physical-model-specifications/IMPLEMENTED_MODELS.md). This snapshot reports implementation and does not redefine the course architecture or imply that every module is fully simulated.
+
+### Rutherford extension snapshot — 2026-11-17
+
+The owner's imported development draft is retained separately from the adopted [model contract](../03-physics/physical-model-specifications/RUTHERFORD_SCATTERING_MODEL.md) and [measurement contract](../03-physics/experiment-simulation-specifications/RUTHERFORD_MEASUREMENT.md).
+
+| Phase | Status | Delivered / remaining |
+| --- | --- | --- |
+| P0 | Complete | Exact mechanics, derivative-based vectors, cross sections, explicit units, thin-target gates and seeded sampling; numerical/reference tests |
+| P1 | Complete | Rescaling geometry, asymptotes, vectors, selectable quantities, linked equations, pinning, drag/scrub/playback, presets and immersive preservation |
+| P2 | Complete for core routes | Vector and radial methods, optional algebra, hodograph/effective-potential views and method comparison |
+| P3 | Complete | Area-to-solid-angle mapping, log/linear curve, keyboard/draggable acceptance bounds, exact ring and approximate patch, P/counts, Poisson observation and separate conditional histogram |
+| P4 | Partial | Keyboard/reduced-motion/mobile-drawer support implemented. The third analytical-mechanics route awaits the specific reference; student review and wider accessibility conformance auditing remain |
+
+M3 and M4 remain in progress for the wider course. This extends Rutherford without claiming the remaining course modules or advanced mechanics route are complete.
 
 ### M0 — Documentation and Product Foundation
 

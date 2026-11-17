@@ -4,7 +4,7 @@
 > - Document Type: Visualization Specification
 > - Status: Accepted
 > - Version: 0.1
-> - Last Updated: 2026-11-11
+> - Last Updated: 2026-11-17
 
 ## 1. Purpose
 
@@ -175,3 +175,11 @@ Before implementation, document:
 ## 10. Deferred Capabilities
 
 A full guided quiz, scoring, or assessment framework is deferred. Lightweight observation prompts may be included later if they arise naturally from a specific visualization, but they are not a required shared system in the initial release.
+
+## 11. Rutherford Mathematical Exploration — 2026-11-17
+
+The [imported development proposal](RUTHERFORD_SCATTERING_DEVELOPMENT_SPEC.md) motivates a specialized three-view composition: Geometry, Derivation, and Cross Section & Measurement. Shared parameter state and quantity IDs connect equation tokens, inspection controls, numerical values and matching graphics. This extends the visualization-first module pattern with mathematics as an active learning interface rather than long explanatory articles.
+
+Geometry opens with a physically computed canvas and linked formula directly below it. Essential derivation steps are revealed one at a time, with optional intermediate algebra. Measurement equations sit beside the corresponding acceptance/curve/count representation. Native keyboard controls mirror clickable math tokens; non-color selection cues and reduced-motion support are required. Narrow-screen parameter/quantity controls use an expandable drawer near the view selector.
+
+Scientific behavior, adopted defaults, head-on limits, cutoff and detector approximations are owned by the [Rutherford model](../03-physics/physical-model-specifications/RUTHERFORD_SCATTERING_MODEL.md) and [measurement](../03-physics/experiment-simulation-specifications/RUTHERFORD_MEASUREMENT.md) contracts. The source's advanced third derivation is a labelled preview, not a completed route.

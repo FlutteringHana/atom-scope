@@ -53,7 +53,7 @@ The visualization implementation will use the simplest suitable browser technolo
 The first local application is implemented. It includes all three Parts, 17 topic entries, nine interactive modules built on six independently tested physics engines, eight concept-note modules, knowledge relationships, and a shared workspace with an immersive mode.
 
 Interactive modules:
-- Rutherford scattering: analytical trajectories, apparatus schematic, and deflection curve.
+- Rutherford scattering: exact trajectories/vectors, linked quantity inspection, vector-impulse and radial derivations, cross sections, and seeded thin-target detector counts.
 - Bohr atom, hydrogen-like ions, atomic transitions, and spectroscopy: coordinated atom, energy, and spectrum views.
 - Blackbody radiation: Planck and Rayleigh–Jeans curves.
 - Photoelectric effect: threshold, kinetic energy, and relative-intensity controls.
@@ -61,6 +61,16 @@ Interactive modules:
 - Hydrogen orbitals: normalized 1s, 2s, and 2p radial probability distributions.
 
 Concept notes explicitly identify deferred interactive features. They are not experimental simulators. See the [implemented model specification](docs/03-physics/physical-model-specifications/IMPLEMENTED_MODELS.md) for scientific assumptions, conventions, and validation targets, and the [roadmap](docs/05-planning/ROADMAP.md) for remaining scope.
+
+### Rutherford mathematical exploration
+
+Open `#/topic/rutherford` for three synchronized views: **Geometry**, **Derivation**, and **Cross Section & Measurement**. They share E, Z and b. Click an equation symbol or a diagram quantity to inspect its definition, computed value and unit; use the equivalent keyboard buttons below equations. Drag the incident line, scrub the exact orbit, toggle vectors, and pin a numeric snapshot. Immersive mode preserves state; narrow screens expose controls in a collapsible top drawer.
+
+The vector route integrates both velocity components with the correct sign of polar-angle change. The radial route includes effective potential, turning point and integral evaluation. A method-comparison table connects their premises and results. The advanced analytical-mechanics route is explicitly a preview pending the specific reference.
+
+Measurement distinguishes exact full-azimuth ring integration from a small-patch approximation, theoretical detector expectations from seeded Poisson observations, and a separate 300-event conditional histogram from the actual incident particle count. Invalid angle bounds and failed thin-target conditions suppress probability and count outputs rather than clamping them.
+
+The supplied [development proposal](docs/02-product/RUTHERFORD_SCATTERING_DEVELOPMENT_SPEC.md) is retained verbatim as a review draft. Adopted choices and authoritative assumptions are in the [Rutherford model contract](docs/03-physics/physical-model-specifications/RUTHERFORD_SCATTERING_MODEL.md) and [measurement contract](docs/03-physics/experiment-simulation-specifications/RUTHERFORD_MEASUREMENT.md).
 
 ## Local development
 
@@ -112,6 +122,8 @@ src/features/        Knowledge workspace, parameters, readouts, details
 src/visualizations/  SVG models, schematics, spectra, and probability plots
 src/components/      Reusable chart presentation
 src/physics/         SI constants and pure, independently tested calculations
+src/physics/rutherford/ Exact Coulomb motion, cross sections and counting statistics
+src/features/rutherford/ Specialized coordinated learning workspace (loaded on demand)
 src/styles/          Responsive editorial/laboratory design system
 tests/               Desktop and mobile interaction tests
 ```

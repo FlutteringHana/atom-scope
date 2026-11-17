@@ -4,7 +4,7 @@
 > - Document Type: Documentation Standard
 > - Status: Accepted
 > - Version: 0.1
-> - Last Updated: 2026-11-11
+> - Last Updated: 2026-11-17
 
 ## 1. Purpose
 
@@ -25,11 +25,15 @@ docs/
 │   ├── PRODUCT_SPEC.md
 │   ├── INFORMATION_ARCHITECTURE.md
 │   ├── GUI_DESIGN_SPEC.md
-│   └── VISUALIZATION_SYSTEM_SPEC.md
+│   ├── VISUALIZATION_SYSTEM_SPEC.md
+│   └── RUTHERFORD_SCATTERING_DEVELOPMENT_SPEC.md # Original review draft
 ├── 03-physics/
 │   ├── MATHEMATICAL_REFERENCE.md
 │   ├── physical-model-specifications/
+│   │   ├── IMPLEMENTED_MODELS.md
+│   │   └── RUTHERFORD_SCATTERING_MODEL.md
 │   └── experiment-simulation-specifications/
+│       └── RUTHERFORD_MEASUREMENT.md
 ├── 04-engineering/
 │   ├── TECHNICAL_ARCHITECTURE.md
 │   └── VALIDATION_STRATEGY.md
@@ -89,6 +93,8 @@ When documents appear to conflict:
 5. Do not preserve conflicting copies of the same specification.
 
 The Physics Knowledge Architecture is the authority for course coverage. Product and technical documents may explain how its knowledge is presented, but must not silently redefine the course content.
+
+The imported Rutherford development proposal retains its original review-draft status. The owner's 2026-11-17 request authorizes the subsequent implementation; adopted choices and current contracts are documented separately in the Rutherford model and measurement specifications. Open questions and the unsupplied analytical-mechanics reference are not treated as already resolved by importing the draft.
 
 ## 5. Document Status
 

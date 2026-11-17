@@ -2,7 +2,7 @@
 
 **Document Type:** Project Decision Log  
 **Project:** AtomScope  
-**Period:** 2026-11-10 — 2026-11-12
+**Period:** 2026-11-10 — 2026-11-17
 
 ---
 
@@ -77,6 +77,14 @@ The owner authorized implementation, `.gitignore`, and staged local commits, wit
 ## 7. GitHub Pages Delivery — 2026-11-12
 
 The owner connected the GitHub remote `FlutteringHana/atom-scope` and authorized committing and pushing the GitHub Pages Actions configuration. Add a validated build/deploy workflow and derive Vite's production base path from the Pages configuration. This instruction replaces the initial local-only delivery constraint for the requested Pages work. Model assumptions and learning content are unchanged.
+
+---
+
+## 8. Rutherford Mathematical Exploration — 2026-11-17
+
+The owner supplied `AtomScope_Rutherford_Scattering_Development_Spec_v0.1.md` and requested documentation updates and further Rutherford implementation. Preserve the source as a review draft and record adopted implementation choices separately, rather than silently treating all suggested product choices as previously accepted project requirements.
+
+Deliver P0–P3 around a shared physical state: exact geometry and quantity inspection; vector and radial derivation routes; cross-section geometry and thin-target predictions with reproducible synthetic counts. The unprovided analytical-mechanics derivation remains explicitly provisional. Keep SI mechanics pure and use explicit MeV/fm/barn conversions, load KaTeX only with the feature, and preserve existing topic routing and other course modules.
 
 ---
 

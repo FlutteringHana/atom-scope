@@ -4,7 +4,7 @@
 > - Document Type: Mathematical Reference
 > - Status: Accepted
 > - Version: 0.1
-> - Last Updated: 2026-11-11
+> - Last Updated: 2026-11-17
 
 ## 1. Purpose
 
@@ -42,6 +42,7 @@ The initial implementation uses [NIST 2022 CODATA](https://physics.nist.gov/cuu/
 | Reduced Planck constant | ℏ | J·s | h / 2π |
 | Speed of light in vacuum | c | m·s⁻¹ | |
 | Electron mass | mₑ | kg | |
+| Alpha-particle mass | mα | kg | 6.644657345e-27, CODATA 2022; no reduced-mass substitution |
 | Vacuum permittivity | ε₀ | F·m⁻¹ | |
 | Bohr radius | a₀ | m | |
 | Rydberg constant | R∞ / R_H | m⁻¹ | Specify convention used |
@@ -55,7 +56,9 @@ This index follows the course knowledge structure. Full derivations and applicab
 ### Atomic Structure and Nuclear Model
 - Coulomb's law.
 - Classical particle dynamics.
-- Rutherford scattering relationships.
+- Rutherford scattering angle, closest approach, exact motion, invariants, effective potential and derivation routes: [model contract](physical-model-specifications/RUTHERFORD_SCATTERING_MODEL.md).
+- Differential/finite-bin cross sections, solid angle, thin-target probabilities and counts: [measurement contract](experiment-simulation-specifications/RUTHERFORD_MEASUREMENT.md). κ denotes Coulomb coupling, θ denotes the asymptotic scattering angle, φ the live polar position angle, and L the angular-momentum magnitude (signed Lz is negative with the chosen y=b incidence).
+- Rutherford display units: 1 MeV=10⁶ eV, 1 fm=10⁻¹⁵ m, 1 barn=10⁻²⁸ m²=100 fm²; dσ/dΩ is barn/sr. The hyperbolic scrub parameter and the radial derivation's integration variable u=1/r are explicitly different quantities.
 
 ### Quantization and Atomic Energy States
 - Planck energy quantization.

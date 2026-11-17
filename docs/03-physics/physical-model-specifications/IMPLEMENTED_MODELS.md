@@ -3,10 +3,10 @@
 > - Document Type: Physics Specification
 > - Status: Accepted
 > - Version: 0.1
-> - Last Updated: 2026-11-11
-> - Scope: Initial local application
+> - Last Updated: 2026-11-17
+> - Scope: Implemented educational models
 
-All output is theoretical prediction unless explicitly marked schematic. There are no experimental measurements bundled with the application. Calculations live in `src/physics/models.ts` and are tested in `src/physics/models.test.ts`. SI is used at computation boundaries; eV, nm, and fm are explicit presentation conversions.
+All output is theoretical prediction unless explicitly marked schematic or synthetic. There are no experimental measurements bundled with the application. Shared calculations live in `src/physics/models.ts`; specialized Rutherford calculations and tests live in `src/physics/rutherford/`. SI is used internally; eV, MeV, nm, fm and barn are explicit boundary conversions.
 
 ## Constants
 
@@ -25,12 +25,9 @@ Use the [NIST 2022 CODATA table](https://physics.nist.gov/cuu/pdf/all.pdf): h = 
 
 ## Rutherford scattering
 
-- Inputs: alpha particle energy 1..10 MeV, gold target Z = 79, impact parameter b = 0..200 fm.
-- Fixed point nucleus, repulsive Coulomb interaction; k = (2 Z e²)/(4 pi epsilon_0); a = k/(2 E); theta = 2 atan2(a,b).
-- Exact hyperbolic orbit in its symmetry frame: x = a(epsilon + cosh u), y = a sqrt(epsilon²-1) sinh u, epsilon = sqrt(1+(b/a)²). Rotate to the incoming beam direction. b = 0 is the head-on limiting orbit.
-- Trajectories have spatial axes in fm, equal x/y scales, with a labelled enlarged nucleus marker. Finite viewport clips asymptotes. No material foil collisions, multiple scattering, recoil, electron screening, strong nuclear force, or event-rate sampling. Small impact parameters are mathematical point-Coulomb extrapolations.
-- Apparatus view is a schematic of the historical experimental arrangement, not an experimental simulator. Scattering data view shows the exact theoretical angle against impact parameter for the same energy.
-- Tests: head-on 180 degrees, monotone falloff with b and E, asymptote direction and distance of closest approach against the analytical formula.
+The authoritative equations, coordinate convention and numerical contracts are now in [Rutherford Scattering Model](RUTHERFORD_SCATTERING_MODEL.md); counting and acceptance are in [Rutherford Measurement](../experiment-simulation-specifications/RUTHERFORD_MEASUREMENT.md). The earlier apparatus/deflection demonstration is replaced by three coordinated geometry, derivation and cross-section views. Legacy SI helpers delegate to the same new physics core.
+
+Defaults E=5 MeV, Z=79, b=40 fm; UI ranges E=2–10 MeV, Z=20–90, b=0–200 fm. The fixed-point-nucleus approximation is unchanged. Alpha mass is centralized in `src/physics/constants.ts`. Exact mechanical vectors, finite ring cross sections, explicitly approximate local patches and seeded Poisson counts are implemented; measured datasets, screening, recoil and multiple scattering remain excluded.
 
 ## Blackbody radiation
 

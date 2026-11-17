@@ -4,7 +4,7 @@
 > - Document Type: Technical Architecture
 > - Status: Accepted
 > - Version: 0.1
-> - Last Updated: 2026-11-11
+> - Last Updated: 2026-11-17
 
 ## 1. Purpose
 
@@ -19,7 +19,7 @@ This document defines the initial software architecture and technology baseline 
 | Build tooling | Vite | Development server and production build |
 | Vector graphics | SVG | Diagrams and many 2D scientific visualizations |
 | Dynamic rendering | Canvas | Particle-heavy or continuously updated scenes where appropriate |
-| Mathematical typesetting | KaTeX (candidate) | Rendering mathematical expressions |
+| Mathematical typesetting | KaTeX in Rutherford | Accessible MathML/HTML equations with linked quantity controls |
 | Styling | CSS / CSS Modules or chosen styling approach | Design system and responsive layout |
 
 React + TypeScript + Vite is the accepted starting stack. Specific visualization and charting libraries remain open until a concrete need is identified.
@@ -180,3 +180,12 @@ The following should be decided during implementation, not prematurely:
 - Constants and pure models live in `src/physics/`; course metadata and content in `src/content/`; the shared workspace in `src/features/`; scientific renderers in `src/visualizations/`.
 - Vitest checks pure calculations and course links. Playwright checks desktop and mobile interactions using installed Chrome. Separate include patterns prevent the runners from collecting one another's tests.
 - Development and preview servers bind to loopback. There is no backend or external service dependency at runtime.
+
+## 13. Rutherford Extension — 2026-11-17
+
+- `src/physics/rutherford/` owns validated SI mechanics, cross sections and counting statistics. Legacy `scattering` and `scatteringPath` delegate to it; SVG never owns a second physical model.
+- `src/content/rutherfordDerivations.ts` and `rutherfordQuantities.ts` hold structured steps, algebra, quantity definitions and computation explanations independently of presentation.
+- `src/features/rutherford/` is a specialized workspace within the existing module shell. All three views share one React-owned parameter state; live point, solution and measurement outputs are derived/memoized. No global store or backend is needed.
+- The feature and bundled KaTeX styles/fonts load lazily. Other course modules do not pay the initial KaTeX download cost. Equations provide MathML for assistive reading and equivalent native buttons for keyboard quantity inspection; mouse clicks on displayed tokens share the same quantity IDs.
+- The trajectory parameter is deterministic and explicitly not uniform time. Playback timers clean up on pause, view change and unmount; reduced-motion mode disables automatic playback while retaining the manual scrubber.
+- Workspace/immersive switching preserves all model/measurement parameters, derivation step, current orbit point, random seed, selected quantity and pinned snapshot. On screens ≤760 px the controls are a top drawer; selecting a quantity opens it. Reset restores E=5 MeV, Z=79, b=40 fm, middle orbit position, default overlays, measurement inputs and seed 42, while retaining the current view/derivation route.
