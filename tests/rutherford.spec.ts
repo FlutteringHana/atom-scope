@@ -139,7 +139,7 @@ test('patch geometry is explicitly approximate and invalid regimes never report 
   await expect(page.locator('.rf-module')).not.toContainText(/Infinity|NaN/);
 });
 
-test('Rutherford playback, immersive state and reduced-motion keyboard inspection', async ({
+test('Rutherford playback, presentation state and reduced-motion keyboard inspection', async ({
   page,
 }) => {
   await page.goto('/#/topic/rutherford');
@@ -152,7 +152,7 @@ test('Rutherford playback, immersive state and reduced-motion keyboard inspectio
   await page.getByRole('button', { name: '固定当前数值' }).click();
   const state = await page.getByTestId('rutherford-state').innerText();
   const position = await scrubber.inputValue();
-  await page.getByRole('button', { name: '沉浸模式', exact: true }).click();
+  await page.getByRole('button', { name: '演示模式', exact: true }).click();
   await expect(page.locator('.rf-sidebar')).toBeHidden();
   await expect(scrubber).toHaveValue(position);
   await page.getByRole('button', { name: '返回工作台', exact: true }).click();

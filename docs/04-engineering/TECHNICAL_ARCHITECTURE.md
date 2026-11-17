@@ -55,7 +55,7 @@ Application Shell
 │   ├── Side Panel
 │   │   ├── Controls
 │   │   └── Contextual Information
-│   ├── Workspace / Immersive Mode
+│   ├── Workspace / Presentation Mode
 │   └── Knowledge Details
 ├── Content Layer
 │   ├── Knowledge Metadata
@@ -188,4 +188,4 @@ The following should be decided during implementation, not prematurely:
 - `src/features/rutherford/` is a specialized workspace within the existing module shell. All three views share one React-owned parameter state; live point, solution and measurement outputs are derived/memoized. No global store or backend is needed.
 - The feature and bundled KaTeX styles/fonts load lazily. Other course modules do not pay the initial KaTeX download cost. Equations provide MathML for assistive reading and equivalent native buttons for keyboard quantity inspection; mouse clicks on displayed tokens share the same quantity IDs.
 - The trajectory parameter is deterministic and explicitly not uniform time. Playback timers clean up on pause, view change and unmount; reduced-motion mode disables automatic playback while retaining the manual scrubber.
-- Workspace/immersive switching preserves all model/measurement parameters, derivation step, current orbit point, random seed, selected quantity and pinned snapshot. On screens ≤760 px the controls are a top drawer; selecting a quantity opens it. Reset restores E=5 MeV, Z=79, b=40 fm, middle orbit position, default overlays, measurement inputs and seed 42, while retaining the current view/derivation route.
+- Workspace/presentation switching preserves all model/measurement parameters, derivation step, current orbit point, random seed, selected quantity and pinned snapshot. On screens ≤760 px the controls are a top drawer; selecting a quantity opens it. Reset restores E=5 MeV, Z=79, b=40 fm, middle orbit position, default overlays, measurement inputs and seed 42, while retaining the current view/derivation route.

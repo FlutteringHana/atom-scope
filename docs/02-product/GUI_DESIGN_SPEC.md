@@ -54,6 +54,8 @@ The application should provide:
 
 The global shell should not consume excessive vertical space, especially on visualization pages.
 
+The desktop header provides a persistent, keyboard-accessible control to collapse or expand the left course navigation. When collapsed, the navigation is removed from layout and the content uses the released width. The control remains available to restore it. This preference survives in-app navigation; it does not reset the topic, view or simulation parameters. Mobile retains its separate open/close directory drawer. Navigation visibility and module Presentation Mode are independent controls.
+
 ## 4. Knowledge Map Interface
 
 The Knowledge Map should use hierarchical cards as the default browsing structure.
@@ -87,7 +89,7 @@ Controls and Context may be organized as tabs or clearly separated sections. The
 
 The panel must remain specific to the active visualization. Do not display irrelevant controls or explanations.
 
-### 5.2 Workspace / Immersive Toggle
+### 5.2 Workspace / Presentation Toggle
 
 Provide a clear user-operated toggle between:
 
@@ -96,7 +98,7 @@ Provide a clear user-operated toggle between:
 - Side panel is available for Controls and Context.
 - Suitable for active exploration with supporting information visible.
 
-**Immersive Visualization Mode**
+**Presentation Mode**
 - Visualization receives substantially more screen space.
 - Side panel is hidden or minimized.
 - A persistent control allows the user to return to Workspace Mode.
@@ -143,7 +145,7 @@ Do not force supplementary material into the primary visualization area.
 
 Use layout variants according to the nature of the content.
 
-### Immersive / Model-oriented layout
+### Presentation / Model-oriented layout
 Suitable for model structures and spatial simulations. Give the central model enough area and keep controls close to the canvas.
 
 ### Experiment-oriented layout
@@ -163,7 +165,7 @@ On narrower screens:
 - The visualization remains the primary content.
 - Controls should remain accessible.
 - Dense multi-chart layouts may stack vertically.
-- Immersive mode should remain reversible.
+- Presentation mode should remain reversible.
 
 Exact breakpoints should be chosen during implementation and tested against actual content.
 

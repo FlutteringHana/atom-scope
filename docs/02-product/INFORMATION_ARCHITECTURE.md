@@ -70,7 +70,7 @@ A Knowledge Module contains:
 1. Primary interactive visualization area.
 2. Visualization selector when multiple views exist.
 3. Side panel for visualization controls and contextual information.
-4. Workspace / immersive mode control.
+4. Workspace / presentation mode control.
 5. Knowledge Details entry.
 6. Supplementary information and related knowledge links.
 

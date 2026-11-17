@@ -50,7 +50,7 @@ The visualization implementation will use the simplest suitable browser technolo
 
 ## Development status
 
-The first local application is implemented. It includes all three Parts, 17 topic entries, nine interactive modules built on six independently tested physics engines, eight concept-note modules, knowledge relationships, and a shared workspace with an immersive mode.
+The first local application is implemented. It includes all three Parts, 17 topic entries, nine interactive modules built on six independently tested physics engines, eight concept-note modules, knowledge relationships, and a shared workspace with a presentation mode.
 
 Interactive modules:
 - Rutherford scattering: exact trajectories/vectors, linked quantity inspection, vector-impulse and radial derivations, cross sections, and seeded thin-target detector counts.
@@ -64,7 +64,7 @@ Concept notes explicitly identify deferred interactive features. They are not ex
 
 ### Rutherford mathematical exploration
 
-Open `#/topic/rutherford` for three synchronized views: **Geometry**, **Derivation**, and **Cross Section & Measurement**. They share E, Z and b. Click an equation symbol or a diagram quantity to inspect its definition, computed value and unit; use the equivalent keyboard buttons below equations. Drag the incident line, scrub the exact orbit, toggle vectors, and pin a numeric snapshot. Immersive mode preserves state; narrow screens expose controls in a collapsible top drawer.
+Open `#/topic/rutherford` for three synchronized views: **Geometry**, **Derivation**, and **Cross Section & Measurement**. They share E, Z and b. Click an equation symbol or a diagram quantity to inspect its definition, computed value and unit; use the equivalent keyboard buttons below equations. Drag the incident line, scrub the exact orbit, toggle vectors, and pin a numeric snapshot. Presentation mode preserves state; narrow screens expose controls in a collapsible top drawer.
 
 The vector route integrates both velocity components with the correct sign of polar-angle change. The radial route includes effective potential, turning point and integral evaluation. A method-comparison table connects their premises and results. The advanced analytical-mechanics route is explicitly a preview pending the specific reference.
 
@@ -93,7 +93,9 @@ npm run format:check # Check consistent source formatting
 
 Browser tests use an installed Google Chrome (`channel: chrome`). If it is unavailable, install Chrome or change `playwright.config.ts` to use Playwright Chromium and run `npx playwright install chromium`. Screenshots are saved to ignored `artifacts/`; failed-test traces go to ignored `test-results/`.
 
-Navigation uses hash routes (`#/part/2`, `#/topic/bohr`, `#/reference`) so direct topic links work without a server-side routing configuration. Parameter state is retained across workspace/immersive changes and view/panel switches; opening another topic starts that topic at its documented defaults. Animations start paused and respect reduced-motion settings.
+Navigation uses hash routes (`#/part/2`, `#/topic/bohr`, `#/reference`) so direct topic links work without a server-side routing configuration. Parameter state is retained across workspace/presentation changes and view/panel switches; opening another topic starts that topic at its documented defaults. Animations start paused and respect reduced-motion settings.
+
+The desktop header's leftmost button collapses or restores the course navigation, allowing more room for the active visualization without resetting its parameters. This choice is retained while navigating within the app. The module's **Presentation Mode / 演示模式** independently hides its controls and deeper-reading area; use the visible return button or Escape to return to the workspace. Mobile uses the existing directory drawer.
 
 ## GitHub Pages deployment
 

@@ -10,6 +10,8 @@ import {
   GitBranch,
   Grid2X2,
   Menu,
+  PanelLeftClose,
+  PanelLeftOpen,
   Search,
   X,
 } from 'lucide-react';
@@ -413,6 +415,7 @@ function Reference() {
 export function App() {
   const route = useRoute();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [navigationCollapsed, setNavigationCollapsed] = useState(false);
   useEffect(() => {
     setMenuOpen(false);
   }, [route]);
@@ -438,6 +441,16 @@ export function App() {
         跳至主要内容
       </a>
       <header className="app-header">
+        <button
+          className="desktop-navigation-toggle icon-button"
+          aria-label={navigationCollapsed ? '展开左侧导航' : '收起左侧导航'}
+          title={navigationCollapsed ? '展开左侧导航' : '收起左侧导航'}
+          aria-controls="course-navigation"
+          aria-expanded={!navigationCollapsed}
+          onClick={() => setNavigationCollapsed((value) => !value)}
+        >
+          {navigationCollapsed ? <PanelLeftOpen size={18} /> : <PanelLeftClose size={18} />}
+        </button>
         <a className="brand" href="#/" aria-label="AtomScope 首页">
           <span className="brand-icon">
             <Atom size={23} strokeWidth={1.35} />
@@ -463,14 +476,19 @@ export function App() {
             className="mobile-menu-button icon-button"
             aria-label={menuOpen ? '关闭目录' : '打开目录'}
             aria-expanded={menuOpen}
+            aria-controls="course-navigation"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </header>
-      <div className="app-layout">
-        <aside className={`sidebar ${menuOpen ? 'menu-open' : ''}`} aria-label="课程目录">
+      <div className={`app-layout ${navigationCollapsed ? 'navigation-collapsed' : ''}`}>
+        <aside
+          id="course-navigation"
+          className={`sidebar ${menuOpen ? 'menu-open' : ''}`}
+          aria-label="课程目录"
+        >
           <div className="sidebar-intro">
             <span className="eyebrow">EXPLORATION INDEX</span>
             <a href="#/">

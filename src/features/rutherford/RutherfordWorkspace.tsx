@@ -31,7 +31,7 @@ const statisticalQuantities: QuantityId[] = [
   'probability',
   'detector-count',
 ];
-export function RutherfordWorkspace({ immersive }: { immersive: boolean }) {
+export function RutherfordWorkspace({ presentation }: { presentation: boolean }) {
   const [p, setP] = useState(defaults),
     [m, setM] = useState<MeasurementParams>(measurementDefaults);
   const [view, setView] = useState(0),
@@ -144,7 +144,7 @@ export function RutherfordWorkspace({ immersive }: { immersive: boolean }) {
   );
   return (
     <section
-      className={`rf-module ${immersive ? 'rf-immersive' : ''}`}
+      className={`rf-module ${presentation ? 'rf-presentation' : ''}`}
       aria-label="Rutherford 数学探索工作台"
     >
       <div className="rf-intro">
@@ -193,7 +193,7 @@ export function RutherfordWorkspace({ immersive }: { immersive: boolean }) {
           </button>
         ))}
       </div>
-      {!immersive && (
+      {!presentation && (
         <button
           className="rf-mobile-tools"
           aria-controls="rf-quantity-sidebar"
@@ -357,7 +357,7 @@ export function RutherfordWorkspace({ immersive }: { immersive: boolean }) {
         <aside
           className="rf-sidebar control-panel"
           id="rf-quantity-sidebar"
-          hidden={immersive || (narrow && !panelOpen)}
+          hidden={presentation || (narrow && !panelOpen)}
           aria-label="Rutherford 参数与物理量"
         >
           <details className="rf-parameter-drawer" open>

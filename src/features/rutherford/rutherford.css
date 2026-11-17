@@ -167,7 +167,7 @@
 .rf-sidebar[hidden] {
   display: none;
 }
-.rf-immersive .rf-layout {
+.rf-presentation .rf-layout {
   grid-template-columns: minmax(0, 1fr);
 }
 .rf-parameter-drawer {

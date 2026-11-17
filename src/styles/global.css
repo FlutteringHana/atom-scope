@@ -187,6 +187,23 @@ svg {
   display: grid;
   grid-template-columns: 236px minmax(0, 1fr);
 }
+.desktop-navigation-toggle {
+  flex-shrink: 0;
+  margin-right: -12px;
+}
+@media (min-width: 761px) {
+  .app-layout.navigation-collapsed {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .app-layout.navigation-collapsed > .sidebar {
+    display: none;
+  }
+}
+@media (max-width: 760px) {
+  .app-header .desktop-navigation-toggle {
+    display: none;
+  }
+}
 .sidebar {
   padding: 35px 22px 26px 27px;
   border-right: 1px solid var(--line);
@@ -1476,20 +1493,20 @@ main {
     opacity: 0.2;
   }
 }
-.immersive .workspace {
+.presentation .workspace {
   grid-template-columns: 1fr;
 }
-.immersive .visual-content {
+.presentation .visual-content {
   min-height: 65vh;
 }
-.immersive .bohr-view {
+.presentation .bohr-view {
   width: min(100%, 1050px);
   margin: auto;
 }
-.immersive .atom-diagram > svg {
+.presentation .atom-diagram > svg {
   max-height: 65vh;
 }
-.immersive .energy-diagram > svg {
+.presentation .energy-diagram > svg {
   max-height: 55vh;
 }
 .reading-intro {
@@ -2109,13 +2126,13 @@ td:nth-child(2) {
   .reading-intro h2 {
     font-size: 20px;
   }
-  .immersive .module-heading {
+  .presentation .module-heading {
     padding-top: 20px;
   }
-  .immersive .visual-content {
+  .presentation .visual-content {
     min-height: 60vh;
   }
-  .immersive .bohr-view {
+  .presentation .bohr-view {
     grid-template-columns: 1.6fr 1fr;
   }
 }
@@ -2486,13 +2503,13 @@ td:nth-child(2) {
   .scene-note {
     font-size: 9px;
   }
-  .immersive .module-heading > .outline-button {
+  .presentation .module-heading > .outline-button {
     position: static;
   }
-  .immersive .visual-content {
+  .presentation .visual-content {
     min-height: 52vh;
   }
-  .immersive .bohr-view {
+  .presentation .bohr-view {
     grid-template-columns: 1.5fr 1fr;
   }
   .reading-intro {

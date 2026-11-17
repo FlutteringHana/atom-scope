@@ -45,7 +45,7 @@ Requirements:
 - Support Model, Experiment, and Data visualization categories.
 - Allow more than one visualization in a module when appropriate.
 - Provide a workspace view with a main visualization and side panel.
-- Provide a control to switch to an immersive visualization view.
+- Provide a control to switch to a presentation view.
 - Provide visualization controls and contextual information in the side panel.
 - Provide a Knowledge Details entry near the lower or peripheral page area.
 - Provide access to supplementary information and related knowledge.
@@ -58,7 +58,7 @@ Requirements:
 - Provide controls relevant to the visualization.
 - Provide contextual information associated with the active visualization.
 - Allow the side panel to be expanded, collapsed, or switched between relevant panel sections.
-- Support an immersive mode that gives the visualization more screen space.
+- Support a presentation mode that gives the visualization more screen space.
 - Preserve the selected topic and visualization when switching display modes where technically practical.
 
 ### 3.4 Knowledge Details
@@ -96,7 +96,7 @@ These resources should be introduced when their content and user value are suffi
 | VIZ-002 | Support Experiment visualization patterns | P0 |
 | VIZ-003 | Support Data visualization patterns | P0 |
 | VIZ-004 | Allow visualization categories to be combined in one module | P0 |
-| UI-001 | Provide workspace and immersive display modes | P0 |
+| UI-001 | Provide workspace and presentation display modes | P0 |
 | UI-002 | Allow side-panel visibility or mode changes | P0 |
 | PHY-001 | Display units and relevant physical quantities clearly | P0 |
 | PHY-002 | Identify important assumptions and approximations | P0 |

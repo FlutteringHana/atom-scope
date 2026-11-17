@@ -132,7 +132,7 @@ export function Workspace({ topic }: { topic: Topic }) {
   const [view, setView] = useState(
     topic.id === 'spectroscopy' ? 2 : topic.id === 'transitions' ? 1 : 0,
   );
-  const [immersive, setImmersive] = useState(false);
+  const [presentation, setPresentation] = useState(false);
   const [panel, setPanel] = useState('controls');
   const [running, setRunning] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
@@ -148,7 +148,7 @@ export function Workspace({ topic }: { topic: Topic }) {
   }, []);
   useEffect(() => {
     const escape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setImmersive(false);
+      if (e.key === 'Escape') setPresentation(false);
     };
     window.addEventListener('keydown', escape);
     return () => window.removeEventListener('keydown', escape);
@@ -218,7 +218,7 @@ export function Workspace({ topic }: { topic: Topic }) {
     </section>
   );
   return (
-    <div className={`module-page ${immersive ? 'immersive' : ''}`} id="workspace-top">
+    <div className={`module-page ${presentation ? 'presentation' : ''}`} id="workspace-top">
       <div className="breadcrumbs">
         <a href="#/">知识地图</a>
         <span>/</span>
@@ -236,11 +236,12 @@ export function Workspace({ topic }: { topic: Topic }) {
         </div>
         {topic.engine && (
           <button
-            className="outline-button immersive-toggle"
-            onClick={() => setImmersive(!immersive)}
+            className="outline-button presentation-toggle"
+            aria-pressed={presentation}
+            onClick={() => setPresentation(!presentation)}
           >
-            {immersive ? <Minimize2 size={15} /> : <Expand size={15} />}
-            {immersive ? '返回工作台' : '沉浸模式'}
+            {presentation ? <Minimize2 size={15} /> : <Expand size={15} />}
+            {presentation ? '返回工作台' : '演示模式'}
           </button>
         )}
       </div>
@@ -252,7 +253,7 @@ export function Workspace({ topic }: { topic: Topic }) {
             </div>
           }
         >
-          <RutherfordWorkspace immersive={immersive} />
+          <RutherfordWorkspace presentation={presentation} />
         </Suspense>
       ) : topic.engine ? (
         <>
@@ -347,7 +348,7 @@ export function Workspace({ topic }: { topic: Topic }) {
                   href="#knowledge-details"
                   onClick={(e) => {
                     e.preventDefault();
-                    if (immersive) setImmersive(false);
+                    if (presentation) setPresentation(false);
                     setTimeout(
                       () =>
                         document
@@ -361,7 +362,7 @@ export function Workspace({ topic }: { topic: Topic }) {
                 </a>
               </div>
             </section>
-            {!immersive && (
+            {!presentation && (
               <aside className="control-panel" aria-label="可视化控制与解释">
                 <div className="panel-tabs">
                   <button
@@ -548,7 +549,7 @@ export function Workspace({ topic }: { topic: Topic }) {
           </a>
         </section>
       )}
-      {!immersive && details}
+      {!presentation && details}
       <div className="module-back">
         <a href={`#/part/${topic.part}`}>
           <ArrowLeft size={15} />

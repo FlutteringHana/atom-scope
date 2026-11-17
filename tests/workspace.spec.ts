@@ -14,7 +14,7 @@ test('knowledge map, part navigation, search, filters and relationships', async 
   await expect(page.locator('.topic-row')).toHaveCount(5);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('量子力学初步');
 });
-test('coordinated Bohr views, immersive state, playback, and reset', async ({ page }) => {
+test('coordinated Bohr views, presentation state, playback, and reset', async ({ page }) => {
   await page.goto('/#/topic/bohr');
   await expect(page.locator('.readouts')).toContainText('656.11 nm');
   await page.getByLabel('单电子体系').selectOption('2');
@@ -22,7 +22,7 @@ test('coordinated Bohr views, immersive state, playback, and reset', async ({ pa
   await expect(page.locator('.readouts')).toContainText('121.50 nm');
   await page.getByRole('button', { name: '播放动画' }).click();
   await expect(page.getByRole('button', { name: '暂停动画' })).toBeVisible();
-  await page.getByRole('button', { name: '沉浸模式' }).click();
+  await page.getByRole('button', { name: '演示模式' }).click();
   await expect(page.locator('.control-panel')).toHaveCount(0);
   await page.getByRole('button', { name: '返回工作台' }).click();
   await expect(page.getByLabel('单电子体系')).toHaveValue('2');
@@ -147,10 +147,10 @@ test('reduced motion, skip link and details navigation remain usable', async ({
     'aria-selected',
     'true',
   );
-  await page.getByRole('button', { name: '沉浸模式' }).click();
+  await page.getByRole('button', { name: '演示模式' }).click();
   await page.getByRole('link', { name: '知识详解', exact: true }).click();
   await expect(page.locator('#knowledge-details')).toBeVisible();
-  await expect(page.getByRole('button', { name: '沉浸模式' })).toBeVisible();
+  await expect(page.getByRole('button', { name: '演示模式' })).toBeVisible();
   if (testInfo.project.name === 'mobile') {
     await page.getByRole('button', { name: '打开目录' }).click();
     await page
