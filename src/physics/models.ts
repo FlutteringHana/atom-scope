@@ -1,3 +1,4 @@
+import { FM, MEV, invariants, pointAtParameter } from './rutherford/coulomb';
 import { C, fromEV, toEV } from './constants';
 
 function positive(value: number, name: string) {
@@ -29,22 +30,14 @@ export function transition(initial: number, final: number, z = 1) {
   } as const;
 }
 export function scattering(energyJ: number, impactM: number, z = 79) {
-  positive(energyJ, 'energy');
-  positive(z, 'Z');
-  if (!Number.isFinite(impactM) || impactM < 0)
-    throw new RangeError('Impact parameter must be nonnegative');
-  const a = (2 * z * C.e ** 2) / (4 * Math.PI * C.epsilon0) / (2 * energyJ);
-  return { angleRad: 2 * Math.atan2(a, impactM), aM: a, closestM: a + Math.hypot(a, impactM) };
+  const result = invariants({ energyMeV: energyJ / MEV, impactFm: impactM / FM, nuclearCharge: z });
+  return { angleRad: result.angleRad, aM: result.aM, closestM: result.closestM };
 }
 export function scatteringPath(energyJ: number, impactM: number): { xM: number; yM: number }[] {
-  const { aM: a } = scattering(energyJ, impactM);
-  const q = impactM / a;
-  const eccentricity = Math.hypot(1, q);
+  const params = { energyMeV: energyJ / MEV, impactFm: impactM / FM, nuclearCharge: 79 };
   return Array.from({ length: 301 }, (_, i) => {
-    const u = -6 + (i * 12) / 300;
-    const x = a * (eccentricity + Math.cosh(u));
-    const y = a * q * Math.sinh(u);
-    return { xM: (-x + q * y) / eccentricity, yM: (q * x + y) / eccentricity };
+    const point = pointAtParameter(params, -6 + (i * 12) / 300);
+    return { xM: point.positionM.x, yM: point.positionM.y };
   });
 }
 export function planck(wavelengthM: number, temperatureK: number) {

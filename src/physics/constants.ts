@@ -5,6 +5,7 @@ export const C = Object.freeze({
   e: 1.602176634e-19,
   kB: 1.380649e-23,
   electronMass: 9.1093837139e-31,
+  alphaMass: 6.644657345e-27,
   epsilon0: 8.8541878188e-12,
   bohrRadius: 5.29177210544e-11,
   rydberg: 10973731.568157,
