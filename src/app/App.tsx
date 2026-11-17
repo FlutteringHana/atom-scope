@@ -349,6 +349,7 @@ function Reference() {
     ['元电荷 e', C.e.toExponential(9), 'C', '定义值（精确）'],
     ['玻尔兹曼常数 kB', C.kB.toExponential(6), 'J·K⁻¹', '定义值（精确）'],
     ['电子质量 me', C.electronMass.toExponential(10), 'kg', 'CODATA 2022'],
+    ['α 粒子质量 mα', C.alphaMass.toExponential(9), 'kg', 'CODATA 2022 · 固定靶模型'],
     ['真空介电常数 ε₀', C.epsilon0.toExponential(10), 'F·m⁻¹', 'CODATA 2022'],
     ['玻尔半径 a₀', C.bohrRadius.toExponential(11), 'm', 'CODATA 2022'],
     ['里德伯常数 R∞', String(C.rydberg), 'm⁻¹', '无限核质量约定'],

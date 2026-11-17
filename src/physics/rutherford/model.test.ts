@@ -198,6 +198,9 @@ describe('reproducible statistics and conditional events', () => {
     const observed = Array.from({ length: 10 }, (_, i) => samplePoisson(lambda, seededRandom(i)));
     expect(new Set(observed).size).toBeGreaterThan(1);
     expect(predictMeasurement(gold, measurementDefaults).expectedCount).toBe(lambda);
+    expect(predictMeasurement({ ...gold, impactFm: 80 }, measurementDefaults).expectedCount).toBe(
+      lambda,
+    );
   });
   for (const mean of [2, 50, 1000])
     it(`has Poisson mean and variance for λ=${mean}`, () => {

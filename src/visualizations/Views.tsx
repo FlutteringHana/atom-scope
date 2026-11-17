@@ -1,4 +1,3 @@
-import { useId } from 'react';
 import { Chart } from '../components/Chart';
 import { C, fromEV, toEV, toNM } from '../physics/constants';
 import {
@@ -8,8 +7,6 @@ import {
   planck,
   radialProbability,
   rayleighJeans,
-  scattering,
-  scatteringPath,
   spectralRegion,
   transition,
   wavelengthColor,
@@ -21,8 +18,6 @@ export interface Parameters {
   n: number;
   final: number;
   z: number;
-  impact: number;
-  energy: number;
   temperature: number;
   wavelength: number;
   work: number;
@@ -34,8 +29,6 @@ export const initialParameters: Parameters = {
   n: 3,
   final: 2,
   z: 1,
-  impact: 60,
-  energy: 5,
   temperature: 5500,
   wavelength: 350,
   work: 2.3,
@@ -45,7 +38,7 @@ export const initialParameters: Parameters = {
 };
 export const views: Record<Engine, string[]> = {
   bohr: ['原子模型', '能级图', '光谱'],
-  scattering: ['散射轨迹', '实验装置', '偏转曲线'],
+  scattering: ['散射几何', '推导探索', '截面与测量'],
   blackbody: ['辐射谱'],
   photoelectric: ['光电实验'],
   matter: ['物质波'],
@@ -282,150 +275,6 @@ export function BohrView({
             {p.n} → {p.final} · {t.kind === 'emission' ? '发射' : '吸收'}
           </text>
         </svg>
-      </div>
-    </div>
-  );
-}
-
-export function ScatteringView({ p, view }: { p: Parameters; view: number }) {
-  const clip = useId();
-  if (view === 1)
-    return (
-      <div className="apparatus">
-        <span className="eyebrow">GOLD FOIL EXPERIMENT · 装置示意</span>
-        <svg
-          viewBox="0 0 730 370"
-          role="img"
-          aria-label="α 粒子源、准直器、金箔与荧光屏的实验装置示意"
-        >
-          <rect x="65" y="140" width="80" height="85" rx="4" fill="#d9c09b" />
-          <text x="105" y="258" textAnchor="middle">
-            α 粒子源
-          </text>
-          <path d="M175 125V173M175 192V240" stroke="#778173" strokeWidth="10" />
-          <text x="181" y="285" textAnchor="middle">
-            准直器
-          </text>
-          <line
-            x1="115"
-            y1="183"
-            x2="395"
-            y2="183"
-            stroke="#a87043"
-            strokeWidth="2"
-            strokeDasharray="5 6"
-          />
-          <rect x="393" y="100" width="5" height="170" fill="#c59a45" />
-          <text x="396" y="303" textAnchor="middle">
-            极薄金箔
-          </text>
-          <path d="M475 65 A160 160 0 0 1 475 307" fill="none" stroke="#8b9a73" strokeWidth="12" />
-          <text x="605" y="170">
-            荧光屏
-          </text>
-          <path
-            d="M398 183L552 183M398 183L530 102M398 183L300 80"
-            stroke="#a87043"
-            strokeWidth="2"
-            fill="none"
-          />
-          <circle cx="300" cy="80" r="4" fill="#a87043" />
-        </svg>
-        <p>装置帮助理解实验安排；可调轨迹位于“散射轨迹”视图，均为单核库仑模型。</p>
-      </div>
-    );
-  if (view === 2)
-    return (
-      <Chart
-        xMax={200}
-        yMax={180}
-        xLabel="碰撞参数 b / fm"
-        yLabel="偏转角 θ / °"
-        series={[
-          {
-            label: `${p.energy} MeV α 粒子 · 金核理论预测`,
-            color: '#a36540',
-            values: Array.from({ length: 201 }, (_, b) => ({
-              x: b,
-              y: (scattering(fromEV(p.energy * 1e6), b * 1e-15).angleRad * 180) / Math.PI,
-            })),
-          },
-        ]}
-      />
-    );
-  const path = scatteringPath(fromEV(p.energy * 1e6), p.impact * 1e-15);
-  const scale = 0.4;
-  return (
-    <div className="scattering-scene">
-      <svg
-        viewBox="0 0 730 450"
-        role="img"
-        aria-label="α 粒子的理论库仑散射轨迹，横纵轴同尺度，单位 fm"
-      >
-        <defs>
-          <clipPath id={clip}>
-            <rect x="65" y="55" width="600" height="330" />
-          </clipPath>
-        </defs>
-        <g className="chart-grid">
-          {[-600, -300, 0, 300, 600].map((x) => (
-            <g key={x}>
-              <line x1={365 + x * scale} x2={365 + x * scale} y1="55" y2="385" />
-              <text x={365 + x * scale} y="408" textAnchor="middle">
-                {x}
-              </text>
-            </g>
-          ))}
-          {[-300, 0, 300].map((y) => (
-            <g key={y}>
-              <line x1="65" x2="665" y1={260 - y * scale} y2={260 - y * scale} />
-              <text x="55" y={264 - y * scale} textAnchor="end">
-                {y}
-              </text>
-            </g>
-          ))}
-        </g>
-        <g clipPath={`url(#${clip})`}>
-          <line
-            x1="65"
-            x2="365"
-            y1={260 - p.impact * scale}
-            y2={260 - p.impact * scale}
-            stroke="#71816b"
-            strokeDasharray="4 5"
-          />
-          <path
-            d={path
-              .map(
-                (v, i) =>
-                  `${i ? 'L' : 'M'}${365 + (v.xM / 1e-15) * scale},${260 - (v.yM / 1e-15) * scale}`,
-              )
-              .join(' ')}
-            fill="none"
-            stroke="#a6653d"
-            strokeWidth="2.8"
-          />
-          <circle cx="365" cy="260" r="8" fill="#b18b45" />
-          <line x1="230" x2="230" y1="260" y2={260 - p.impact * scale} stroke="#6c8060" />
-          <text x="205" y={250 - (p.impact * scale) / 2} fill="#50674b" fontSize="12">
-            b
-          </text>
-        </g>
-        <text x="80" y="35" className="chart-label">
-          位置 y / fm
-        </text>
-        <text x="665" y="436" textAnchor="end" className="chart-label">
-          位置 x / fm
-        </text>
-        <text x="380" y="285" fill="#7f6a3b" fontSize="12">
-          Au · Z = 79（核标记放大）
-        </text>
-      </svg>
-      <div className="chart-legend">
-        <span>
-          <i style={{ background: '#a6653d' }} />α 粒子理论轨迹
-        </span>
-        <span>固定点核 · 单次散射 · 非相对论</span>
       </div>
     </div>
   );

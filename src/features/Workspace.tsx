@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import {
   ArrowDown,
   ArrowLeft,
@@ -17,18 +17,22 @@ import {
   bohrState,
   matterWave,
   photoelectric,
-  scattering,
   spectralRegion,
   transition,
 } from '../physics/models';
 import {
   BohrView,
-  ScatteringView,
   OtherView,
   initialParameters,
   views,
   type Parameters,
 } from '../visualizations/Views';
+
+const RutherfordWorkspace = lazy(() =>
+  import('./rutherford/RutherfordWorkspace').then((module) => ({
+    default: module.RutherfordWorkspace,
+  })),
+);
 
 function Slider({
   label,
@@ -84,13 +88,6 @@ function Readouts({ topic, p }: { topic: Topic; p: Parameters }) {
       ['初态轨道半径', `${toNM(bohrState(p.n, p.z).radiusM).toFixed(4)} nm`],
       ['跃迁光子能量', `${toEV(t.photonJ).toFixed(3)} eV`],
       ['真空波长', `${toNM(t.wavelengthM).toFixed(2)} nm`],
-    ];
-  }
-  if (topic.engine === 'scattering') {
-    const r = scattering(fromEV(p.energy * 1e6), p.impact * 1e-15);
-    rows = [
-      ['偏转角 θ', `${((r.angleRad * 180) / Math.PI).toFixed(2)}°`],
-      ['最近核距离', `${(r.closestM * 1e15).toFixed(2)} fm`],
     ];
   }
   if (topic.engine === 'blackbody')
@@ -247,7 +244,17 @@ export function Workspace({ topic }: { topic: Topic }) {
           </button>
         )}
       </div>
-      {topic.engine ? (
+      {topic.engine === 'scattering' ? (
+        <Suspense
+          fallback={
+            <div role="status" className="reading-intro">
+              正在载入 Rutherford 数学探索…
+            </div>
+          }
+        >
+          <RutherfordWorkspace immersive={immersive} />
+        </Suspense>
+      ) : topic.engine ? (
         <>
           <div className={`workspace ${topic.engine === 'bohr' ? 'dark-viz' : ''}`}>
             <section className="visual-panel" aria-label="交互可视化">
@@ -303,8 +310,6 @@ export function Workspace({ topic }: { topic: Topic }) {
                     running={running && !reducedMotion}
                     setPair={(n, final) => setP((old) => ({ ...old, n, final }))}
                   />
-                ) : topic.engine === 'scattering' ? (
-                  <ScatteringView p={p} view={view} />
                 ) : (
                   <OtherView engine={topic.engine} p={p} running={running && !reducedMotion} />
                 )}
@@ -421,27 +426,6 @@ export function Workspace({ topic }: { topic: Topic }) {
                               ))}
                           </select>
                         </label>
-                      </>
-                    )}
-                    {topic.engine === 'scattering' && (
-                      <>
-                        <Slider
-                          label="碰撞参数 b"
-                          value={p.impact}
-                          min={0}
-                          max={200}
-                          unit="fm"
-                          onChange={(v) => change('impact', v)}
-                        />
-                        <Slider
-                          label="α 粒子动能"
-                          value={p.energy}
-                          min={1}
-                          max={10}
-                          step={0.5}
-                          unit="MeV"
-                          onChange={(v) => change('energy', v)}
-                        />
                       </>
                     )}
                     {topic.engine === 'blackbody' && (

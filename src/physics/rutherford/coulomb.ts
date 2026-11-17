@@ -71,7 +71,7 @@ export function pointAtParameter(p: RutherfordParams, u: number): OrbitPoint {
 }
 export function solveRutherford(p: RutherfordParams): RutherfordSolution {
   const s = invariants(p);
-  const edgeM = Math.max(s.closestM * 8, p.impactFm * FM * 4, 300 * FM);
+  const edgeM = Math.max(s.closestM * 4, p.impactFm * FM * 4, 300 * FM);
   const maxOrbitParameter = Math.acosh((edgeM / s.aM - 1) / s.eccentricity);
   const trajectory = Array.from({ length: 241 }, (_, i) =>
     pointAtParameter(p, maxOrbitParameter * (i / 120 - 1)),
